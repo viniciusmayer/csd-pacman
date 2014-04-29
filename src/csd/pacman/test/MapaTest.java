@@ -8,7 +8,6 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import csd.pacman.Mapa;
-import csd.pacman.Movimento;
 
 public class MapaTest {
 	
@@ -42,11 +41,15 @@ public class MapaTest {
 		assertEquals('V', new Mapa().getPosicao(2,1));
 	}
 
-	/*@Test
+	@Test
 	public void testImprimirMapaPosicaoZero() {
 		Mapa mapa = new Mapa();
-		mapa.imprimir();
-	}*/
+		try {
+			mapa.imprimir();
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
 	
 	@Test
 	public void testObterPosicaoDoPacmanDeveRetornarUmUm(){
@@ -95,7 +98,11 @@ public class MapaTest {
 	public void testImprimirMapaPosicaoUm() throws InterruptedException {
 		Mapa mapa = new Mapa();
 
-		mapa.imprimir();
+		try {
+			mapa.imprimir();
+		} catch (Exception e) {
+			assertTrue(false);
+		}
 		Thread.sleep(2000);
 		int[] de = {1,  1};
 		int[] para = {1, 2};
@@ -104,7 +111,11 @@ public class MapaTest {
 			System.out.println();
 		}
 		
-		mapa.imprimir();
+		try {
+			mapa.imprimir();
+		} catch (Exception e) {
+			assertTrue(false);
+		}
 		Thread.sleep(2000);
 		int[] deDois = {1, 2};
 		int[] paraDois = {1, 3};
@@ -113,6 +124,10 @@ public class MapaTest {
 			System.out.println();
 		}
 		
-		mapa.imprimir();
+		try {
+			mapa.imprimir();
+		} catch (Exception e) {
+			assertTrue(false);
+		}
 	}
 }
