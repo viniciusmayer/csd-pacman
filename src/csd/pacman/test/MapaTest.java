@@ -15,17 +15,17 @@ public class MapaTest {
 			for (int j = 0; j < 14; j++) {
 				char posicao = mapa.getPosicao(i, j);
 				switch (posicao) {
-				case 'w':
-					System.out.print("#");
+				case 'W':
+					System.out.print("###");
 					break;
-				case 'v':
-					System.out.print(" ");
+				case 'V':
+					System.out.print("   ");
 					break;
-				case 'p':
-					System.out.print("@");
+				case 'P':
+					System.out.print(" @ ");
 					break;
-				case 'g':
-					System.out.print("&");
+				case 'G':
+					System.out.print(" & ");
 					break;
 
 				default:
