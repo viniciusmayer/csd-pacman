@@ -5,7 +5,7 @@ public class Mapa {
 	char[][] mapa = new char[11][14];
 	
 	public Mapa() {
-		this.mapa[0][0] = 'W';
+		mapa[0][0] = 'W';
 		mapa[0][1] = 'W';
 		mapa[0][2] = 'W';
 		mapa[0][3] = 'W';
