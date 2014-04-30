@@ -1,5 +1,8 @@
 package csd.pacman;
 
-public class Movimento {
-
+public enum Movimento {
+	RIGHT,
+	LEFT,
+	UP,
+	DOWN
 }

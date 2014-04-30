@@ -195,7 +195,7 @@ public class Mapa {
 		return mapa[linha][coluna];
 	}
 
-	public int[] getPosicaoPacman() throws Exception {
+	public int[] getPosicaoPacman() {
 		for (int linha = 0; linha < TAMANHO_LINHAS; linha++) {
 			for (int coluna = 0; coluna < TAMANHO_COLUNAS; coluna++) {
 				if (mapa[linha][coluna] == 'P') {
@@ -203,15 +203,15 @@ public class Mapa {
 				}
 			}
 		}
-		throw new Exception("pacman nao encontrado");
+		throw new RuntimeException("pacman nao encontrado");
 	}
-
+	
 	public void setPosicaoPacman(int[] de, int[] para) {
 		mapa[de[0]][de[1]] = VAZIO;
 		mapa[para[0]][para[1]] = PACMAN;
 	}
 
-	public void imprimir() throws Exception {
+	public void imprimir() {
 		for (int linha = 0; linha < 11; linha++) {
 			for (int coluna = 0; coluna < 14; coluna++) {
 				char posicao = getPosicao(linha, coluna);
@@ -229,7 +229,7 @@ public class Mapa {
 					System.out.print(" & ");
 					break;
 				default:
-					throw new Exception("mapa incorreto");
+					throw new RuntimeException("mapa incorreto");
 				}
 			}
 			System.out.println();
@@ -248,5 +248,44 @@ public class Mapa {
 	}
 
 	public void moverPacman(Movimento movimento) {
+		if (movimento == Movimento.DOWN) {
+			int[] p = getPosicaoPacman();
+			//TODO validar movimento
+			mapa[p[0]][p[1]] = VAZIO;
+			mapa[p[0]+1][p[1]] = PACMAN;
+		}
+		if (movimento == Movimento.UP) {
+			int[] p = getPosicaoPacman();
+			//TODO validar movimento
+			mapa[p[0]][p[1]] = VAZIO;
+			mapa[p[0]-1][p[1]] = PACMAN;
+		}
 	}
+	
+	public void jogar() {
+		char key = this.getKey();
+		while (key != 'q') {
+			Movimento m = fromCharToMovimento(key);
+			this.moverPacman(m);
+			this.imprimir();
+			key = this.getKey();
+		}
+	}
+	
+	private Movimento fromCharToMovimento(char key) {
+		if (key == 'w') {
+			return Movimento.UP;
+		}
+		if (key == 's') {
+			return Movimento.DOWN;
+		}
+		if (key == 'a') {
+			return Movimento.LEFT;
+		}
+		if (key == 'd') {
+			return Movimento.RIGHT;
+		}
+		return null;
+	}
+
 }
